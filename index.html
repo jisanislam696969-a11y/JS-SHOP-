@@ -3,44 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JS SHOP - Online Store</title>
+<title>JS SHOP - Bangladesh Best Shop</title>
 <style>
-body{font-family:sans-serif;background:#f5f5f5;margin:0;padding:0}
-header{background:#000;color:#fff;padding:15px;text-align:center;font-size:22px;font-weight:bold}
-.container{max-width:500px;margin:20px auto;background:#fff;padding:20px;border-radius:15px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
-input{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px;box-sizing:border-box}
-button{width:100%;padding:12px;background:#000;color:#fff;border:none;border-radius:8px;font-weight:bold;margin-top:10px}
-.product{display:flex;justify-content:space-between;background:#f9f9f9;padding:12px;border-radius:10px;margin:10px 0}
-.success{color:green;text-align:center;font-weight:bold}
-</style>
-</head>
-<body>
-<header>JS SHOP</header>
-<div class="container" id="box">
-<h2>Register - এখন ঠিক আছে!</h2>
-<input id="name" placeholder="Full Name">
-<input id="email" placeholder="Email">
-<input id="pass" type="password" placeholder="Password">
-<button onclick="doReg()">Register করুন</button>
-<p style="text-align:center">Already have account? <a href="#" onclick="showLogin()">Login</a></p>
-<div id="msg"></div>
-</div>
-<script>
-function doReg(){
-let n=name.value,e=email.value,p=pass.value;
-if(!n||!e||!p)return alert('সব ঘর পূরণ করো');
-let users=JSON.parse(localStorage.getItem('js_users')||'[]');
-if(users.find(u=>u.email==e))return alert('এই ইমেইলে আগে Register করা আছে');
-users.push({name:n,email:e,pass:p});
-localStorage.setItem('js_users',JSON.stringify(users));
-document.getElementById('msg').innerHTML='<p class=success>✅ Register Success! এখন Login করতে পারবে</p>';
-}
-function showLogin(){
-let e=prompt('Email লেখো'),p=prompt('Password লেখো');
-let users=JSON.parse(localStorage.getItem('js_users')||'[]');
-let f=users.find(u=>u.email==e&&u.pass==p);
-if(f){document.getElementById('box').innerHTML='<h2>Welcome '+f.name+'! 🎉</h2><div class=product><span>T-Shirt</span><b>৳550</b></div><div class=product><span>Smart Watch</span><b>৳2500</b></div><div class=product><span>Headphone</span><b>৳1200</b></div><p class=success>Login Success! Database Error আর নেই</p>'}else alert('ভুল Email বা Password');
-}
-</script>
-</body>
-</html>
+body{margin:0; font-family:sans-serif; background:#0f0f0f; color:white; text-align:center;}
+header{background:linear-gradient(90deg,#FFD700,#FFA500); color:black; padding:25px;}
+header h1{margin:0; font-size:34px; font-weight:900;}
+.products{display:grid; grid-template-columns:1fr 1fr; gap:15px; padding:20px;}
+.card{background:#1e1e1e; padding:12px; border-radius:15px; border:1px solid #333;}
+.card img{width:100%; height:160px; object-fit:cover; border-radius:10px;}
+.card h3{font-size:15px; margin:10px 0 5px 0;}
+.price{color:#FFD700; font-weight:bold; font-size:18px;}
+button{background:#FFD700; border:none; padding:10px; border-radius:20px; font-weight
