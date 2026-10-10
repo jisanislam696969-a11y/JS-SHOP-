@@ -8,12 +8,14 @@
 body{margin:0; font-family:sans-serif; background:#0f0f0f; color:white; text-align:center;}
 header{background:linear-gradient(90deg,#FFD700,#FFA500); color:black; padding:25px;}
 header h1{margin:0; font-size:34px; font-weight:900;}
+header p{margin:5px 0 0 0; font-weight:bold;}
 .products{display:grid; grid-template-columns:1fr 1fr; gap:15px; padding:20px;}
 .card{background:#1e1e1e; padding:12px; border-radius:15px; border:1px solid #333;}
 .card img{width:100%; height:160px; object-fit:cover; border-radius:10px;}
-.card h3{font-size:15px; margin:10px 0 5px 0;}
+.card h3{font-size:15px; margin:10px 0 5px 0; min-height:40px;}
 .price{color:#FFD700; font-weight:bold; font-size:18px;}
-button{background:#FFD700; border:none; padding:10px; border-radius:20px; font-weight:bold; width:100%; margin-top:8px;}
+button{background:#FFD700; border:none; padding:10px; border-radius:20px; font-weight:bold; width:100%; margin-top:8px; cursor:pointer;}
+button:active{transform:scale(0.95);}
 footer{padding:20px; color:#888;}
 </style>
 </head>
@@ -22,32 +24,42 @@ footer{padding:20px; color:#888;}
 <h1>JS SHOP</h1>
 <p>Bangladesh er No.1 Jersey Shop - BPL & Football</p>
 </header>
+
 <div class="products">
 <div class="card">
 <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500">
 <h3>Bangladesh Cricket Jersey</h3>
 <div class="price">৳ 650</div>
-<button>Order Now</button>
+<button onclick="order('Bangladesh Cricket Jersey - 650 Taka')">Order Now</button>
 </div>
 <div class="card">
 <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500">
 <h3>BPL 2025 Jersey</h3>
 <div class="price">৳ 750</div>
-<button>Order Now</button>
+<button onclick="order('BPL 2025 Jersey - 750 Taka')">Order Now</button>
 </div>
 <div class="card">
 <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500">
 <h3>Club Football Jersey</h3>
 <div class="price">৳ 550</div>
-<button>Order Now</button>
+<button onclick="order('Club Football Jersey - 550 Taka')">Order Now</button>
 </div>
 <div class="card">
 <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500">
 <h3>Premium Cap</h3>
 <div class="price">৳ 350</div>
-<button>Order Now</button>
+<button onclick="order('Premium Cap - 350 Taka')">Order Now</button>
 </div>
 </div>
-<footer>© 2026 JS SHOP | Dhaka, Bangladesh</footer>
+
+<footer>© 2026 JS SHOP | Dhaka, Bangladesh<br>WhatsApp: 01876842604</footer>
+
+<script>
+function order(product){
+let msg = "Assalamu Alaikum JS SHOP%0A Ami order korte chai:%0A 👕 " + product + "%0A%0A Amar Nam:%0A Address:%0A";
+let url = "https://wa.me/8801876842604?text=" + msg;
+window.open(url, '_blank');
+}
+</script>
 </body>
 </html>
