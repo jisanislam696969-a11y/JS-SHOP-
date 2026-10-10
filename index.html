@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JS SHOP BD - Trusted Shopping Partner</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#f5f5f5;padding-bottom:80px}
+.top-header{background:#0f1c3f;color:white;padding:12px 15px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:8px}
+.logo-icon{background:#ff6a00;width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;color:black;font-size:18px}
+.logo h1{font-size:22px;font-weight:900;line-height:1}
+.logo h1 span{color:#ff6a00}.logo h1 b{color:#00c853}
+.logo p{font-size:10px;color:#aaa;letter-spacing:.5px}
+.top-icons{display:flex;gap:18px;font-size:22px}
+.search-bar{padding:10px 15px;background:#0f1c3f}
+.search-box{background:white;display:flex;border-radius:8px;overflow:hidden;height:44px}
+.search-box input{flex:1;border:none;padding:0 15px;font-size:14px;outline:none}
+.search-box.s-icon{width:44px;display:flex;align-items:center;justify-content:center;color:#666}
+.search-box.s-btn{background:#ff6a00;width:60px;display:flex;align-items:center;justify-content:center;color:white;font-size:20px;cursor:pointer}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px}
+.card{background:white;border-radius:8px;overflow:hidden;position:relative;border:1px solid #eee}
+.badge{position:absolute;top:6px;left:6px;z-index:2;display:flex;flex-direction:column;gap:4px}
+.b-off{background:#e60000;color:white;font-size:11px;font-weight:700;padding:3px 7px;border-radius:4px}
+.b-free{background:#00b14f;color:white;font-size:10px;font-weight:700;padding:3px 8px;border-radius:12px;display:flex;align-items:center;gap:3px}
+.card img{width:100%;height:155px;object-fit:contain;padding:10px;background:white}
+.card-body{padding:8px 10px}
+.card-body h3{font-size:12px;line-height:1.3;height:32px;overflow:hidden;color:#222;font-weight:500}
+.stars{font-size:11px;color:#ffb400;margin:5px 0}
+.price{color:#ff6a00;font-weight:700;font-size:15px}.old{color:#888;text-decoration:line-through;font-size:12px;margin-left:5px;font-weight:400}
+.btn-cart{width:100%;border:1.5px solid #ff6a00;color:#ff6a00;background:white;padding:8px;border-radius:6px;font-weight:700;font-size:13px;margin-top:8px;cursor:pointer}
+.btn-cart:active{background:#ff6a00;color:white}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #ddd;display:flex;justify-content:space-around;padding:8px 0;z-index:100}
+.nav-item{text-align:center;font-size:10px;color:#777;cursor:pointer}
+.nav-item.active{color:#ff6a00}
+.nav-item div{font-size:22px}
+.account-page{display:none;padding:20px;text-align:center}
+.account-page.avatar{width:70px;height:70px;background:#0f1c3f;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;margin:20px auto}
+.inp{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;margin:8px 0}
+.btn-login{background:#ff6a00;color:white;border:none;width:100%;padding:13px;border-radius:8px;font-weight:700;margin-top:10px}
+.whats-float{position:fixed;bottom:80px;right:15px;background:#ff6a00;width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:28px;box-shadow:0 4px 12px rgba(0,0,0,.3);cursor:pointer;z-index:99}
+</style>
+</head>
+<body>
+
+<div class="top-header">
+<div class="logo"><div class="logo-icon">JS</div><div><h1><span>JS</span> SHOP <b>BD</b></h1><p>Trusted Shopping Partner</p></div></div>
+<div class="top-icons"><span onclick="showPage('account')">👤</span><span>♡</span><span onclick="showPage('cart')">🛒<sup id="cartCount" style="background:#ff6a00;color:white;border-radius:50%;padding:1px 5px;font-size:10px">0</sup></span></div>
+</div>
+
+<div class="search-bar">
+<div class="search-box">
+<input id="search" placeholder="Search for products..." onkeyup="searchProduct()">
+<div class="s-icon">🎤</div><div class="s-icon">📷</div>
+<div class="s-btn">⌕</div>
+</div>
+</div>
+
+<div id="homePage">
+<div class="grid" id="productGrid">
+<!-- Product 1 -->
+<div class="card" data-name="Kiam Natural Tri-Ply Stainless Steel Cookware Set">
+<div class="badge"><span class="b-off">-7%</span><span class="b-free">🚚 FREE DELIVERY</span></div>
+<img src="https://images.unsplash.com/photo-1585837071054-6ea0d81856a6?w=400">
+<div class="card-body">
+<h3>Kiam Natural Tri-Ply Stainless Steel Cookware Set 7 Piece</h3>
+<div class="stars">★★★★★ <span style="color:#888">(1)</span></div>
+<div><span class="price">৳5,590</span><span class="old">৳6,000</span></div>
+<button class="btn-cart" onclick="addToCart('Kiam Cookware Set 7 Piece',5590)">Add to Cart</button>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="card" data-name="Kiam Drum Rice Cooker">
+<div class="badge"><span class="b-off">-26%</span><span class="b-free">🚚 FREE DELIVERY</span></div>
+<img src="https://images.unsplash.com/photo-1585515656626-cd82a59db00e?w=400">
+<div class="card-body">
+<h3>Kiam Drum Rice Cooker 3.0L DRC-4704 1100W</h3>
+<div><span class="price">৳3,290</span><span class="old">৳4,450</span></div>
+<button class="btn-cart" onclick="addToCart('Kiam Rice Cooker 3.0L',3290)">Add to Cart</button>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="card" data-name="Kiam Pure Aluminium Karai">
+<div class="badge"><span class="b-off">-14%</span></div>
+<img src="https://images.unsplash.com/photo-1585837071054-6ea0d81856a6?w=400">
+<div class="card-body">
+<h3>Kiam Pure Aluminium Karai with Lid</h3>
+<div><span class="price">৳1,250</span><span class="old">৳1,450</span></div>
+<button class="btn-cart" onclick="addToCart('Kiam Karai with Lid',1250)">Add to Cart</button>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="card" data-name="Pureit Filter">
+<div class="badge"><span class="b-off">-10%</span></div>
+<img src="https://images.unsplash.com/photo-1584305574647-0cc949a2bb9f?w=400">
+<div class="card-body">
+<h3>Pureit Classic Microfibre Mesh MFM Filter</h3>
+<div><span class="price">৳450</span><span class="old">৳500</span></div>
+<button class="btn-cart" onclick="addToCart('Pureit Filter',450)">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ACCOUNT PAGE -->
+<div id="accountPage" class="account-page">
+<div class="avatar">👤</div>
+<h2>My Account</h2>
+<p style="color:#666;font-size:13px;margin:5px 0 15px">Welcome to JS SHOP BD</p>
+<input class="inp" placeholder="Full Name">
+<input class="inp" placeholder="Phone: 01876842604" value="01876842604">
+<input class="inp" placeholder="Email Address">
+<button class="btn-login" onclick="alert('Account Saved! ✅'); showPage('home')">Save Account</button>
+<button class="btn-login" style="background:#0f1c3f" onclick="window.open('https://wa.me/8801876842604','_blank')">Contact on WhatsApp</button>
+</div>
+
+<!-- CART PAGE -->
+<div id="cartPage" class="account-page">
+<h2 style="margin-top:30px">🛒 My Cart (<span id="cartCount2">0</span>)</h2>
+<div id="cartList" style="text-align:left;margin-top:15px"></div>
+<button class="btn-login" onclick="checkout()">Checkout via WhatsApp</button>
+</div>
+
+<div class="whats-float" onclick="window.open('https://wa.me/8801876842604','_blank')">💬</div>
+
+<div class="bottom-nav">
+<div class="nav-item active" onclick="showPage('home')"><div>⌂</div>Home</div>
+<div class="nav-item" onclick="alert('Categories Coming Soon')"><div>⊞</div>Categories</div>
+<div class="nav-item" onclick="showPage('cart')"><div>🛒</div>Cart</div>
+<div class="nav-item" onclick="alert('Favourites Coming Soon')"><div>♡</div>Favourites</div>
+<div class="nav-item" id="navAccount" onclick="showPage('account')"><div>👤</div>Account</div>
+</div>
+
+<script>
+let cart=[];
+function addToCart(name,price){cart.push({name,price});updateCart();alert(name+' Cart e add holo ✅')}
+function updateCart(){document.getElementById('cartCount').innerText=cart.length;document.getElementById('cartCount2').innerText=cart.length;let html='';let total=0;cart.forEach((c,i)=>{total+=c.price;html+=`<div style="background:white;padding:10px;border-radius:8px;margin-bottom:8px;display:flex;justify-content:space-between"><span>${c.name}</span><b>৳${c.price}</b></div>`});html+=`<div style="text-align:right;font-weight:800;margin-top:10px">Total: ৳${total}</div>`;document.getElementById('cartList').innerHTML=html||'<p>Cart khali</p>'}
+function showPage(p){document.getElementById('homePage').style.display=p=='home'?'block':'none';document.getElementById('accountPage').style.display=p=='account'?'block':'none';document.getElementById('cartPage').style.display=p=='cart'?'block':'none';document.querySelectorAll('.nav-item').forEach(e=>e.classList.remove('active'));if(p=='home')document.querySelectorAll('.nav-item')[0].classList.add('active');if(p=='account')document.getElementById('navAccount').classList.add('active')}
+function checkout(){if(cart.length==0){alert('Cart khali!');return}let msg='Assalamu Alaikum JS SHOP BD%0AOrder:%0A';let total=0;cart.forEach(c=>{msg+='- '+c.name+' ৳'+c.price+'%0A';total+=c.price});msg+='%0ATotal: ৳'+total+'%0A%0APhone: 01876842604';window.open('https://wa.me/8801876842604?text='+msg,'_blank')}
+function searchProduct(){let q=document.getElementById('search').value.toLowerCase();document.querySelectorAll('.card').forEach(card=>{let n=card.getAttribute('data-name').toLowerCase();card.style.display=n.includes(q)?'block':'none'})}
+</script>
+</body>
+  </html>
